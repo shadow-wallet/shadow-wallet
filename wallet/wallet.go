@@ -1,16 +1,14 @@
 package wallet
 
 import (
-	"encoding/json"
+	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/shadow-wallet/bitcoind"
 	"github.com/shadow-wallet/coinmarket"
 	"github.com/shadow-wallet/shadow-wallet/wallet/template"
-	"io"
 	"log"
 	"net/http"
 	"os"
-	"strings"
 	"time"
 )
 
@@ -19,8 +17,9 @@ var (
 )
 
 type Wallet struct {
-	bc *bitcoind.Bitcoind
-	cm *coinmarket.CoinMarket
+	bc   *bitcoind.Bitcoind
+	cm   *coinmarket.CoinMarket
+	conf Config
 }
 
 func New(conf Config) (*Wallet, error) {
@@ -76,39 +75,10 @@ func (w *Wallet) startUpdatingCoinValue() {
 	}()
 }
 
-func queryToJSON(body []byte) []byte {
-	if len(body) == 0 {
-		return body
-	}
-	j := map[string]any{}
-	elm := strings.Split(string(body), "&")
-	for _, e := range elm {
-		spl := strings.Split(e, "=")
-		j[spl[0]] = spl[1]
-	}
-	dat, err := json.Marshal(j)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	return dat
-}
-
 func (w *Wallet) redirectHome(wr http.ResponseWriter, r *http.Request) {
-	http.Redirect(wr, r, "http://127.0.0.1:8080", 301)
+	http.Redirect(wr, r, fmt.Sprintf("http://%s", w.conf.Server.Address), 301)
 }
 
 func (w *Wallet) redirectLogin(wr http.ResponseWriter, r *http.Request) {
-	http.Redirect(wr, r, "http://127.0.0.1:8080/login", 301)
-}
-
-func unmarshalQuery(body io.ReadCloser, dst any) ([]byte, error) {
-	b, err := io.ReadAll(body)
-	if err != nil {
-		return b, err
-	}
-	if len(b) == 0 {
-		return b, nil
-	}
-	buf := queryToJSON(b)
-	return buf, json.Unmarshal(buf, &dst)
+	http.Redirect(wr, r, fmt.Sprintf("http://%s/login", w.conf.Server.Address), 301)
 }

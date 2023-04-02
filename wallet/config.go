@@ -1,6 +1,9 @@
 package wallet
 
 type Config struct {
+	Server struct {
+		Address string `json:"address"`
+	} `json:"server"`
 	Daemon struct {
 		Address  string `json:"address"`
 		Username string `json:"username"`
