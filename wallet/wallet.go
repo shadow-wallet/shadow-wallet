@@ -29,8 +29,9 @@ func New(conf Config) (*Wallet, error) {
 		return nil, err
 	}
 	w := &Wallet{
-		cm: coinmarket.New(conf.CoinMarket.APIKEY),
-		bc: bc,
+		cm:   coinmarket.New(conf.CoinMarket.APIKEY),
+		bc:   bc,
+		conf: conf,
 	}
 	return w, nil
 }
