@@ -1,0 +1,10 @@
+[coinmarket]
+  api_key = ""
+
+[daemon]
+  address = "127.0.0.1:8334"
+  password = ""
+  username = ""
+
+[server]
+  address = "127.0.0.1:8080"
