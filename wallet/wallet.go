@@ -4,12 +4,14 @@ import (
 	"encoding/json"
 	"github.com/gorilla/mux"
 	"github.com/shadow-wallet/bitcoind"
+	"github.com/shadow-wallet/coinmarket"
 	"github.com/shadow-wallet/shadow-wallet/wallet/template"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"strings"
+	"time"
 )
 
 var (
@@ -21,6 +23,14 @@ type Wallet struct {
 }
 
 func New(conf Config) *Wallet {
+	cm := coinmarket.New(conf.Coinmarket.APIKEY)
+	cm.UpdateFiat()
+	go func() {
+		for {
+			time.Sleep(time.Minute * 5)
+			cm.UpdateFiat()
+		}
+	}()
 	bc, err := bitcoind.New(conf.Daemon.Address,
 		conf.Daemon.Username, conf.Daemon.Password)
 	if err != nil {
