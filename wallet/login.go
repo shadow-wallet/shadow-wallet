@@ -1,8 +1,8 @@
-package app
+package wallet
 
 import (
 	"fmt"
-	"github.com/shadow-wallet/shadow-wallet/app/auth"
+	"github.com/shadow-wallet/shadow-wallet/wallet/auth"
 	"log"
 	"net/http"
 	"strings"
@@ -13,14 +13,14 @@ type loginInfo struct {
 	Passphrase string `json:"passphrase"`
 }
 
-func (a *App) Login(w http.ResponseWriter, r *http.Request) {
+func (w *Wallet) Login(wr http.ResponseWriter, r *http.Request) {
 	if _, ok := auth.Authenticated(r); ok {
-		redirectHome(w, r)
+		w.redirectHome(wr, r)
 		return
 	}
 
 	if r.Method == http.MethodGet {
-		loginTemplate.Execute(w, nil)
+		loginTemplate.Execute(wr, nil)
 		return
 	}
 
@@ -30,9 +30,9 @@ func (a *App) Login(w http.ResponseWriter, r *http.Request) {
 		log.Fatalln(err)
 	}
 
-	err = auth.Authenticate(w, lgInfo.Username, lgInfo.Passphrase, strings.Split(r.RemoteAddr, ":")[0])
+	err = auth.Authenticate(wr, lgInfo.Username, lgInfo.Passphrase, strings.Split(r.RemoteAddr, ":")[0])
 	if err != nil {
-		_, _ = fmt.Fprint(w, err)
+		_, _ = fmt.Fprint(wr, err)
 	}
-	redirectHome(w, r)
+	w.redirectHome(wr, r)
 }

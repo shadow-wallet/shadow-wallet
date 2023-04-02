@@ -2,8 +2,8 @@ package cryptage
 
 import (
 	"encoding/base64"
-	"github.com/shadow-wallet/shadow-wallet/app/auth/security"
-	"github.com/shadow-wallet/shadow-wallet/app/auth/standard"
+	"github.com/shadow-wallet/shadow-wallet/wallet/auth/security"
+	"github.com/shadow-wallet/shadow-wallet/wallet/auth/standard"
 	"strings"
 )
 

@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/shadow-wallet/shadow-wallet/app/auth/standard"
+	"github.com/shadow-wallet/shadow-wallet/wallet/auth/standard"
 )
 
 var (

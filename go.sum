@@ -18,12 +18,8 @@ github.com/pragu3/gophig v0.0.0-20230122155134-2c8eebfc0249 h1:p+9+bx35ONX6yIwgB
 github.com/pragu3/gophig v0.0.0-20230122155134-2c8eebfc0249/go.mod h1:OVI/Jiv6Vn4vZRSANJq8CwFKN1jSctJ58lgIvfHpdZs=
 github.com/rogpeppe/go-internal v1.9.0 h1:73kH8U+JUqXU8lRuOHeVHaa/SZPifC7BkcraZVejAe8=
 github.com/rogpeppe/go-internal v1.9.0/go.mod h1:WtVeX8xhTBvf0smdhujwtBcq4Qrzq/fJaraNFVN+nFs=
-github.com/shadow-wallet/bitcoind v0.0.0-20230219022702-9026f2266648 h1:n2IOGvUQ1REbBumgVf6ePC206sIKZoo90hYkw0I3z4A=
-github.com/shadow-wallet/bitcoind v0.0.0-20230219022702-9026f2266648/go.mod h1:npo4PPBjdCcNqruF2eYtfdCYAojhqQhbroHphwGhvu4=
 github.com/shadow-wallet/bitcoind v0.0.0-20230219023345-b44f506f7f36 h1:gUCsT30cam1thJaIt+dtCTuqfaVbAuvcNMZTXKISMvQ=
 github.com/shadow-wallet/bitcoind v0.0.0-20230219023345-b44f506f7f36/go.mod h1:Zg7Tlit4NkR9fYGrbND6E8dPb9HxAuutSn7D4YAzGQw=
-github.com/shadow-wallet/coinmarket v0.0.0-20230219022544-1bb07744b0f1 h1:b7uO6fxY1V3heRTXLSSnrjXKuVsJuWhWTEnoMwdxmy8=
-github.com/shadow-wallet/coinmarket v0.0.0-20230219022544-1bb07744b0f1/go.mod h1:nMEn27cSt8avoqjOwbA9uTKhGfVJes1vGmQ+ET3w0kM=
 github.com/shadow-wallet/coinmarket v0.0.0-20230219023259-6b562d3cb8cf h1:51NA81Fnpq8dBUs9PM+eOtKNpeKiTSIYT4LcZjEK39s=
 github.com/shadow-wallet/coinmarket v0.0.0-20230219023259-6b562d3cb8cf/go.mod h1:Hc6o9WtLB6gI3yL1kChCPW9sWfoEVczXhzONmkw105Y=
 github.com/stretchr/testify v1.3.0 h1:TivCn/peBQ7UY8ooIcPgZFpTNSz0Q2U6UrFlUfqbe0Q=

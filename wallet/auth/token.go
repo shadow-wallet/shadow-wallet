@@ -3,8 +3,8 @@ package auth
 import (
 	"encoding/base64"
 	"fmt"
-	"github.com/shadow-wallet/shadow-wallet/app/auth/cryptage"
-	"github.com/shadow-wallet/shadow-wallet/app/auth/security"
+	"github.com/shadow-wallet/shadow-wallet/wallet/auth/cryptage"
+	"github.com/shadow-wallet/shadow-wallet/wallet/auth/security"
 	"strings"
 )
 
