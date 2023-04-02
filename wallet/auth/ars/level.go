@@ -1,10 +1,8 @@
-package security
+package ars
 
 import (
 	"math/rand"
 	"time"
-
-	"github.com/shadow-wallet/shadow-wallet/wallet/auth/standard"
 )
 
 var (
@@ -12,18 +10,18 @@ var (
 	LevelWeak    = New(2)
 	LevelMedium  = New(3)
 	LevelStrong  = New(4)
-	// LevelHash est indéchriffrable
+	// LevelHash can't be decrypted
 	LevelHash = New(5)
 )
 
-// Level est une structure de niveau de sécurité
+// Level is a security level structure
 type Level struct {
 	Spacing        int
 	FirstStrBreak  string
 	SecondStrBreak string
 }
 
-// New retourne un nouveau Level
+// New returns a new Level
 func New(level int) Level {
 	var spacing int
 	var firstStrBreak, secondStrBreak string
@@ -41,12 +39,12 @@ func New(level int) Level {
 	}
 }
 
-// genSecString retourne une chaine de caractère aléatoire
+// genSecString returns a random string
 func genSecString(level int) string {
 	rand.Seed(time.Now().UnixNano())
 	var secStr = "`"
 	for i := 0; i != level; i++ {
-		secStr += string(standard.CharList[rand.Intn(len(standard.CharList)-1)])
+		secStr += string(characters[rand.Intn(len(characters)-1)])
 	}
 	return secStr
 }

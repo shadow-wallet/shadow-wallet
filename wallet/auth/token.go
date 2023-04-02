@@ -3,14 +3,13 @@ package auth
 import (
 	"encoding/base64"
 	"fmt"
-	"github.com/shadow-wallet/shadow-wallet/wallet/auth/cryptage"
-	"github.com/shadow-wallet/shadow-wallet/wallet/auth/security"
+	"github.com/shadow-wallet/shadow-wallet/wallet/auth/ars"
 	"strings"
 )
 
 func ValidateToken(tok, addr string) (string, bool) {
 	actualTok, _ := base64.StdEncoding.DecodeString(tok)
-	res := cryptage.Decrypt(string(actualTok), security.LevelDefault)
+	res := ars.Decrypt(string(actualTok), ars.LevelDefault)
 	split := strings.Split(res, "-")
 
 	usr := split[0]
@@ -19,8 +18,8 @@ func ValidateToken(tok, addr string) (string, bool) {
 
 	// TEMP: we should use the stored validator in the user db.
 	var validator = val
-	if cryptage.Decrypt(val, security.LevelDefault) != cryptage.Decrypt(validator, security.LevelDefault) ||
-		addr != cryptage.Decrypt(addr2, security.LevelDefault) {
+	if ars.Decrypt(val, ars.LevelDefault) != ars.Decrypt(validator, ars.LevelDefault) ||
+		addr != ars.Decrypt(addr2, ars.LevelDefault) {
 		return "", false
 	}
 
@@ -28,8 +27,8 @@ func ValidateToken(tok, addr string) (string, bool) {
 }
 
 func GenerateToken(username, passphrase, remoteAddr string) string {
-	validator := cryptage.Encrypt(passphrase, security.LevelDefault)
-	addr := cryptage.Encrypt(remoteAddr, security.LevelDefault)
-	tok := cryptage.Encrypt(fmt.Sprintf("%s-%s-%s", username, validator, addr), security.LevelDefault)
+	validator := ars.Encrypt(passphrase, ars.LevelDefault)
+	addr := ars.Encrypt(remoteAddr, ars.LevelDefault)
+	tok := ars.Encrypt(fmt.Sprintf("%s-%s-%s", username, validator, addr), ars.LevelDefault)
 	return base64.StdEncoding.EncodeToString([]byte(tok))
 }
