@@ -1,0 +1,10 @@
+[CoinMarket]
+  APIKEY = ""
+
+[Daemon]
+  Address = "127.0.0.1:8334"
+  Password = ""
+  Username = ""
+
+[Server]
+  Address = "127.0.0.1:8080"
