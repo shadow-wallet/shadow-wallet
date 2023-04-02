@@ -6,7 +6,7 @@ type Config struct {
 		Username string `json:"username"`
 		Password string `json:"password"`
 	} `json:"daemon"`
-	Coinmarket struct {
+	CoinMarket struct {
 		APIKEY string `json:"api_key"`
 	} `json:"coinmarket"`
 }

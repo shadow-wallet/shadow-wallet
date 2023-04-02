@@ -6,8 +6,11 @@ import (
 
 func main() {
 	conf := readConfig()
-	a := wallet.New(conf)
-	err := a.ListenAndServe(":8080")
+	w, err := wallet.New(conf)
+	if err != nil {
+		panic(err)
+	}
+	err = w.ListenAndServe(":8080")
 	if err != nil {
 		panic(err)
 	}
