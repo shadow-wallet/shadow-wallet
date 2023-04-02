@@ -17,5 +17,6 @@ type Config struct {
 func DefaultConfig() Config {
 	c := Config{}
 	c.Daemon.Address = "127.0.0.1:8334"
+	c.Server.Address = "127.0.0.1:8080"
 	return c
 }
