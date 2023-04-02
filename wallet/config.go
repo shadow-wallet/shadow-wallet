@@ -2,16 +2,16 @@ package wallet
 
 type Config struct {
 	Server struct {
-		Address string `json:"address"`
-	} `json:"server"`
+		Address string `toml:"address"`
+	} `toml:"server"`
 	Daemon struct {
-		Address  string `json:"address"`
-		Username string `json:"username"`
-		Password string `json:"password"`
-	} `json:"daemon"`
+		Address  string `toml:"address"`
+		Username string `toml:"username"`
+		Password string `toml:"password"`
+	} `toml:"daemon"`
 	CoinMarket struct {
-		APIKEY string `json:"api_key"`
-	} `json:"coinmarket"`
+		APIKEY string `toml:"api_key"`
+	} `toml:"coinmarket"`
 }
 
 func DefaultConfig() Config {
